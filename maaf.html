@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Maafin Aku Ya?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe6e6; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            overflow: hidden; /* Mencegah layar bisa di-scroll saat tombol lari */
+            touch-action: none; /* Mencegah zoom atau scroll tidak sengaja di HP */
+        }
+        h1 {
+            color: #d63031;
+            margin-bottom: 10px;
+            padding: 0 15px;
+        }
+        p {
+            color: #2d3436;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 90%;
+            padding: 0 15px;
+        }
+        .btn-container {
+            position: relative;
+            width: 280px;
+            height: 120px;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #btnYes {
+            background-color: #00b894;
+            color: white;
+            position: absolute;
+            left: 0;
+            top: 20px;
+            transition: transform 0.2s;
+        }
+        #btnYes:active {
+            transform: scale(0.95);
+        }
+        #btnNo {
+            background-color: #d63031;
+            color: white;
+            position: absolute;
+            right: 0;
+            top: 20px;
+            transition: left 0.2s ease, top 0.2s ease; 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="content">
+        <h1>pleasee maafinn akuuu🥺</h1>
+        <p>maaff di ml tadi akuu ndaa ngasih kamu nana, dan malah ngambil heal pas darah akuu penuh... maafff saayaangggg</p>
+        <div class="btn-container">
+            <button id="btnYes" onclick="forgiven()">Iya, dimaafin</button>
+            <button id="btnNo" onmouseover="runAway(event)" ontouchstart="runAway(event)">Nggak!</button>
+        </div>
+    </div>
+
+    <script>
+        function runAway(e) {
+            // Mencegah klik bawaan agar tombol benar-benar lari sebelum tersentuh
+            if(e) e.preventDefault(); 
+
+            const btnNo = document.getElementById('btnNo');
+            
+            const maxX = window.innerWidth - btnNo.offsetWidth - 20;
+            const maxY = window.innerHeight - btnNo.offsetHeight - 20;
+            
+            const x = Math.max(20, Math.random() * maxX);
+            const y = Math.max(20, Math.random() * maxY);
+
+            btnNo.style.position = 'fixed';
+            btnNo.style.left = `${x}px`;
+            btnNo.style.top = `${y}px`;
+        }
+
+        function forgiven() {
+            document.getElementById('content').innerHTML = `
+                <h1 style="font-size: 2.5rem; margin-top: 20px;">yeyyyyyy! maaaciii caayaangggg💙</h1>
+                <p style="font-size: 1.2rem;">nantii akuu beliin yang kamu mau pas akuu punya uangnya yaa💙💐</p>
+            `;
+            document.body.style.backgroundColor = '#fdcb6e';
+        }
+    </script>
+
+</body>
+</html>
